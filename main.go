@@ -76,10 +76,10 @@ func main() {
 
 func init() {
 	ascii := figlet4go.NewAsciiRender()
-	renderStr, _ := ascii.Render("SIMPLEBOT")
+	renderStr, _ := ascii.Render("SimpleBot")
 	// Set Browser
 	store.DeviceProps.PlatformType = waProto.DeviceProps_SAFARI.Enum()
-	store.DeviceProps.Os = proto.String("SIMPLEBOT")
+	store.DeviceProps.Os = proto.String("SimpleBot")
 	// Print Banner
 	fmt.Print(renderStr)
 }
