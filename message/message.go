@@ -12,9 +12,9 @@ import (
 
 // Config
 var (
-	prefix = "!"
-	self   = true
-	owner  = "6289636559820"
+	prefix = "#"
+	self   = false
+	owner  = "5219996125657"
 )
 
 func Msg(client *whatsmeow.Client, msg *events.Message) {
@@ -44,9 +44,9 @@ func Msg(client *whatsmeow.Client, msg *events.Message) {
 	case prefix + "menu":
 		simp.Reply(helper.Menu(pushName, prefix))
 	case prefix + "owner":
-		simp.SendContact(from, owner, "vnia")
+		simp.SendContact(from, owner, "💫 Bruno Sobrino ")
 	case prefix + "source":
-		simp.Reply("Source Code : https://github.com/fckvania/go-whatsapp-bot")
+		simp.Reply("Source Code : https://github.com/BrunoSobrino/SimpleBot-MD")
 	case prefix + "sticker":
 		if quotedImage != nil {
 			data, _ := client.Download(quotedImage)
@@ -57,5 +57,15 @@ func Msg(client *whatsmeow.Client, msg *events.Message) {
 			stc := simp.CreateStickerIMG(data)
 			client.SendMessage(context.Background(), from, "", stc)
 		}
+	case prefix + "s":
+		if quotedImage != nil {
+			data, _ := client.Download(quotedImage)
+			stc := simp.CreateStickerIMG(data)
+			client.SendMessage(context.Background(), from, "", stc)
+		} else if msg.Message.GetImageMessage() != nil {
+			data, _ := client.Download(msg.Message.GetImageMessage())
+			stc := simp.CreateStickerIMG(data)
+			client.SendMessage(context.Background(), from, "", stc)
+		}		
 	}
 }
