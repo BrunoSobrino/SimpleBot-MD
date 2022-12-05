@@ -52,15 +52,15 @@ func main() {
 				// Render the QR code here
 				qrterminal.GenerateHalfBlock(evt.Code, qrterminal.L, os.Stdout)
 				// or just manually `echo 2@... | qrencode -t ansiutf8` in a terminal
-				log.Println("Please Scan")
+				log.Println("Escanea este codigo QR")
 			} else {
-				log.Println("Succes Login")
+				log.Println("Inicio de sesión exitoso")
 			}
 		}
 	} else {
 		// Already logged in, just connect
 		err = client.Connect()
-		log.Println("Succes Login")
+		log.Println("Inicio de sesión exitoso")
 		if err != nil {
 			panic(err)
 		}
@@ -76,10 +76,10 @@ func main() {
 
 func init() {
 	ascii := figlet4go.NewAsciiRender()
-	renderStr, _ := ascii.Render("VNIA BOT")
+	renderStr, _ := ascii.Render("SIMPLEBOT")
 	// Set Browser
 	store.DeviceProps.PlatformType = waProto.DeviceProps_SAFARI.Enum()
-	store.DeviceProps.Os = proto.String("VNIA BOT")
+	store.DeviceProps.Os = proto.String("SIMPLEBOT")
 	// Print Banner
 	fmt.Print(renderStr)
 }
