@@ -57,15 +57,5 @@ func Msg(client *whatsmeow.Client, msg *events.Message) {
 			stc := simp.CreateStickerIMG(data)
 			client.SendMessage(context.Background(), from, "", stc)
 		}
-	case prefix + "s":
-		if quotedImage != nil {
-			data, _ := client.Download(quotedImage)
-			stc := simp.CreateStickerIMG(data)
-			client.SendMessage(context.Background(), from, "", stc)
-		} else if msg.Message.GetImageMessage() != nil {
-			data, _ := client.Download(msg.Message.GetImageMessage())
-			stc := simp.CreateStickerIMG(data)
-			client.SendMessage(context.Background(), from, "", stc)
-		}		
 	}
 }
